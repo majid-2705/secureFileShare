@@ -22,7 +22,6 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //auto increment
     private Long id;
-
     private String email;
     private String password;
     private LocalDateTime createdAt;
