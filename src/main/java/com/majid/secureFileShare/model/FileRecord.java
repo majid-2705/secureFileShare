@@ -20,9 +20,12 @@ public class FileRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String fileName;
+    private String fileType;
+    private long fileSize;
     private String filePath;
-    private Long ownerId; //user that uploaded the file
+    private String uploadedBy; //user that uploaded the file
     private LocalDateTime uploadTime;
+
+
 }

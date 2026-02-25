@@ -20,7 +20,7 @@ public class UserService {
     }
 
     public User registerUser (String email, String password) {
-        if(userRepository.findByEmail(email).isPresent()) {
+        if(findByEmail(email).isPresent()) {
             throw new RuntimeException("Email already exists");
         }
         User user = new User();
@@ -30,6 +30,12 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    public boolean authenticate(String loginEmail, String loginPassword) {
+        Optional<User> userFetchedData = findByEmail(loginEmail);
+        if(userFetchedData.isEmpty()) {return false;}
+        User user = userFetchedData.get();
+        return passwordEncoder.matches(loginPassword, user.getPassword());
+    }
     public Optional<User> findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
