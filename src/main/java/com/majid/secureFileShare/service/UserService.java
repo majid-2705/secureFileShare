@@ -30,6 +30,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
+
     public boolean authenticate(String loginEmail, String loginPassword) {
         Optional<User> userFetchedData = findByEmail(loginEmail);
         if(userFetchedData.isEmpty()) {return false;}
