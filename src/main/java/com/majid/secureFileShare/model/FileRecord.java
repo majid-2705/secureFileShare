@@ -1,9 +1,6 @@
 package com.majid.secureFileShare.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,7 +21,10 @@ public class FileRecord {
     private String fileType;
     private long fileSize;
     private String filePath;
-    private String uploadedBy; //user that uploaded the file
+
+    @ManyToOne
+    @JoinColumn (name = "user_id")
+    private User uploadedBy; //user that uploaded the file
     private LocalDateTime uploadTime;
 
 
