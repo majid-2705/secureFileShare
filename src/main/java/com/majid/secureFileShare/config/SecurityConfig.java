@@ -30,7 +30,7 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())  // ✅ correct modern syntax
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**", "/login", "/register")
+                        .requestMatchers("/auth/**")
                         .permitAll()
                         .requestMatchers("/api/files/**").authenticated()
                         .anyRequest().authenticated()
